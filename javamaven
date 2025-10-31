@@ -1,33 +1,18 @@
 pipeline {
-    // 1. Define the agent (where to run)
     agent any
-
-    // 2. Define tools to use (matches the name from Step 1)
     tools {
         maven 'Maven-3.9.5'
     }
-
-    // 3. Define the stages (the steps)
     stages {
-        stage('Checkout') {
-            steps {
-                // Clones the project from your repository
-                git 'https://github.com/sujayyy8/javaMavenPipeline.git'
-            }
-        }
-
+        // The Checkout stage has been removed.
+        
         stage('Build & Test') {
             steps {
-                // Runs 'clean', then 'package'
-                // 'package' automatically compiles, runs tests, and packages the code
                 sh 'mvn clean package'
             }
         }
-
         stage('Archive Artifact') {
             steps {
-                // Saves the built .jar or .war file inside Jenkins
-                // This makes it available for download from the build page.
                 archiveArtifacts artifacts: 'target/*.jar', fingerprint: true
             }
         }
