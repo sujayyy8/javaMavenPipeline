@@ -8,7 +8,11 @@ pipeline {
         
         stage('Build & Test') {
             steps {
-                bat 'mvn clean package'
+                // Change into the 'javamaven' directory first
+                dir('javamaven') {
+                    // Now run the build command from inside that folder
+                    bat 'mvn clean package'
+                }
             }
         }
         stage('Archive Artifact') {
