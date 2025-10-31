@@ -4,7 +4,7 @@ pipeline {
 
     // 2. Define tools to use (matches the name from Step 1)
     tools {
-        maven 'Maven-3.9.6'
+        maven 'Maven-3.9.5'
     }
 
     // 3. Define the stages (the steps)
